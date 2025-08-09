@@ -1,41 +1,124 @@
-var nome = "roberta";
-var idade = 26;
-var simbolo = Symbol();
-console.log(typeof nome, idade, simbolo);
+function areaQuadrado(lado) {
+  return lado * lado;
+}
+console.log(areaQuadrado(2));
 
-var sobrenome = "silva";
-var nomeCompleto = nome + " " + sobrenome;
-console.log(nomeCompleto);
+function pi() {
+  return 3.14;
+}
 
-var gols = 1000;
-var frase = "Romário fez" + " " + gols + " " + "gols";
-// usando o template string - usar com `crase
-var frase2 = `Romário fez ${gols} gols`;
-console.log(frase);
-console.log(frase2);
+var total = 5 * pi(); // 15.7
+//
+function imc(peso, altura) {
+  var imc = peso / (altura * altura);
+  return imc;
+}
+console.log(imc(44, 1.6));
 
-//exercicio
-// Declare uma variável contendo uma string
-var myColor = "blue";
-console.log(typeof myColor);
+//
+function corFavorita(cor) {
+  if (cor === "azul") {
+    return "eu gosto do céu";
+  } else if (cor === "verde") {
+    return "eu gosto de mato";
+  } else {
+    return "eu nao gosto de cores";
+  }
+}
+// Se apenas definirmos a função com o function e não executarmos a mesma, nada que estiver dentro dela irá acontecer
 
-// Declare uma variável contendo um número dentro de uma string
-var day = "18";
-console.log(typeof day);
+//Argumentos podem ser funções - Chamadas de Callback, geralmente são funções que ocorrem após algum evento.
+addEventListener("click", function () {
+  console.log("Clicou");
+});
+// A função possui dois argumentos
+// Primeiro é a string 'click'
+// Segundo é uma função anônima
 
-// Declare uma variável com a sua idade
-var myAge = 26;
-console.log(typeof myAge);
+//Pode ou não retornar um valor - Quando não definimos o return, ela irá retornar undefined. O código interno da função é executado normalmente, independente de existir valor de return ou não.
+function imc(peso, altura) {
+  const imc = peso / altura ** 2;
+  console.log(imc);
+}
+imc(80, 1.8); // retorna o imc
+console.log(imc(80, 1.8)); // retorna o imc e undefined
+//
 
-// Declare duas variáveis, uma com seu nome
-// e outra com seu sobrenome e some as mesmas
-var myName = "roberta";
-var myLastName = "silva";
-var completeName = `${myName} ${myLastName}`;
-console.log(completeName);
-// Coloque a seguinte frase em uma variável: It's time
-var frase2 = "it´s time";
-var frase3 = "it´s time"; // 'it\'s time'
+//Valores retornados - Uma função pode retornar qualquer tipo de dado e até outras funções.
+function terceiraIdade(idade) {
+  console.log(typeof idade);
+  if (typeof idade !== "number") {
+    return "Por favor preencha um número";
+  } else if (idade >= 60) {
+    return true;
+  } else {
+    return false;
+  }
+}
+console.log(terceiraIdade("r"));
+//Cuidado, retornar diferentes tipos de dados na mesma função não é uma boa ideia!!!!!!!!!
 
-// Verifique o tipo da variável que contém o seu nome
-console.log(typeof myName);
+//
+//Escopo - Variáveis e funções definidas dentro de um bloco {}, não são visíveis fora dele.
+function FaltaVisitar(paisesVisitados) {
+  var totalPaises = 193;
+  return `Falta visitar ${totalPaises - paisesVisitados} paises.`;
+}
+console.log(totalPaises); // retorna erro pq está do lado de fora das {}
+//
+
+//exercicio /
+//  Crie uma função para verificar se um valor é Truthy
+function isTruthy(valor) {
+  return !!valor;
+}
+// Crie uma função matemática que retorne o perímetro de um quadrado
+// lembrando: perímetro é a soma dos quatro lados do quadrado
+function perimetroQuadrado(lado) {
+  return lado * 4;
+}
+// Crie uma função que retorne o seu nome completo
+// ela deve possuir os parâmetros: nome e sobrenome
+
+function completeName(name, lastName) {
+  return `${name} ${lastName}`;
+}
+
+// Crie uma função que verifica se um número é par
+function par(numero) {
+  var modulo = numero % 2;
+  if (modulo === 0) {
+    return true;
+  } else {
+    return false;
+  }
+}
+// Crie uma função que retorne o tipo de
+// dado do argumento passado nela (typeof)
+function tipoDado(dado) {
+  return typeof dado;
+}
+
+// addEventListener é uma função nativa do JavaScript
+// o primeiro parâmetro é o evento que ocorre e o segundo o Callback
+// utilize essa função para mostrar no console o seu nome completo
+// quando o evento 'click' ocorrer.
+addEventListener("scroll", function () {
+  console.log("roberta silva");
+});
+
+addEventListener("click", function () {
+  console.log("Clicou1");
+});
+
+// Corrija o erro abaixo
+var totalPaises = 193;
+
+function precisoVisitar(paisesVisitados) {
+  return `Ainda faltam ${totalPaises - paisesVisitados} países para visitar`;
+}
+function jaVisitei(paisesVisitados) {
+  return `Já visitei ${paisesVisitados} do total de ${totalPaises} países`;
+}
+precisoVisitar(20);
+jaVisitei(20);

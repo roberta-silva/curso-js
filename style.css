@@ -1,0 +1,19 @@
+body {
+  font-family: sans-serif;
+  background-color: #e6e6fa;
+}
+h1 {
+  color: #9400d3;
+}
+h2 {
+  color: #6b1391;
+}
+ul {
+  list-style: circle;
+}
+li {
+  padding: 10px;
+}
+a {
+  text-decoration: none;
+}

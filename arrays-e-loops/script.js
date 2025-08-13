@@ -4,12 +4,10 @@ videoGames[0];
 // videoGames.pop(); //remove o ultimo e o retorna
 videoGames.push("3DS"); // adiciona ao final
 videoGames.length;
-
 //for loop
 for (var numero = 0; numero < 3; numero++) {
   console.log(numero);
 }
-
 //while loop (for loop é o mais comum)
 var i = 0;
 while (i < 3) {
@@ -23,7 +21,6 @@ for (var item = 0; item < videoGames.length; item++) {
     break;
   }
 }
-
 //forEach
 var frutas = ["pessego", "maça", "pera", "uva"];
 frutas.forEach(function (fruta, index, array) {
@@ -34,13 +31,11 @@ frutas.forEach(function (fruta, index, array) {
 // Crie uma array com os anos que o Brasil ganhou a copa
 // 1959, 1962, 1970, 1994, 2002
 var brasilCampeao = [1959, 1962, 1970, 1994, 2002];
-
 // Interaja com a array utilizando um loop, para mostrar
 // no console a seguinte mensagem, `O brasil ganhou a copa de ${ano}`
 for (var i = 0; i < brasilCampeao.length; i++) {
   console.log(`O Brasil ganhou a copa de ${brasilCampeao[i]}`);
 }
-
 // Interaja com um loop nas frutas abaixo e pare ao chegar em Pera
 var frutas = ["Banana", "Maçã", "Pera", "Uva", "Melância"];
 for (var fruta = 0; fruta < frutas.length; fruta++) {

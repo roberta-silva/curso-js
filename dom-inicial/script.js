@@ -6,7 +6,6 @@ const h1Classes = h1Selected.classList;
 function callback() {
   console.log("Clicou em", h1Selected.innerText);
 }
-
 h1Selected.addEventListener("click", callback);
 
 // Retorne o url da página atual utilizando o objeto window

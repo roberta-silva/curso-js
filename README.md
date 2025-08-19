@@ -14,6 +14,11 @@ Cada pasta corresponde a um assunto ou exercício específico:
 - **Arrays e Loops** → Manipulação de listas e estruturas de repetição
 - **Atribuição e Operador Ternário** → Formas de atribuir valores e lógica condicional simplificada
 - **DOM Inicial** → Seleção de elementos, eventos e manipulação básica
+- **Seletores** → Métodos para selecionar elementos no DOM como `querySelector` e `querySelectorAll`
+- **forEach** → Iteração de listas, NodeLists e Arrays de forma simplificada
+- **Classes e Atributos** → Manipulação de classes CSS e atributos HTML via JavaScript
+- **Dimensões e Distâncias** → Propriedades para medir largura, altura e posição de elementos na página
+- **Eventos** → Adição e remoção de eventos, objeto `event` e boas práticas de uso
 - _(Novos tópicos serão adicionados conforme o avanço do curso)_
 
 ## 🛠 Tecnologias

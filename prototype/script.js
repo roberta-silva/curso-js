@@ -29,3 +29,33 @@ function Pessoa(nome, idade) {
 //acessan o mesmo método, mas __proto__ não tera acesso ao this.nome
 roberta.andar();
 roberta.__proto__.andar(); //não devemos falar com _proto_ diretamente = undefined
+
+const lista = document.querySelectorAll("li"); //nodelist
+const listaArray = Array.prototype.slice.call(lista); //transforma em array //linkado ao prototipo
+const listaArray1 = Array.from(lista); //linkado a funcao array
+// Array.from(lista); //melhor
+
+Object.getOwnPropertyNames(Array); //
+Object.getOwnPropertyNames(Array.prototype); //
+
+Object.getOwnPropertyNames(roberta);
+Object.getOwnPropertyNames(Pessoa.prototype); // assim
+Object.getOwnPropertyNames(roberta.__proto__); // não assim
+
+const Carro = {
+  marca: "ford",
+  preco: 2000,
+  andar() {
+    return true;
+  },
+};
+
+//importante saber o que está retornando para saber ao que tem acesso
+Carro.andar.constructor.name; //uma forma de ver o que é
+Carro.marca; // "ford" string
+Carro.marca.toUpperCase; //"FORD"
+
+Carro.preco; // number
+
+Carro.andar(); //boolean
+Carro.andar; // function

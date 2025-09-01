@@ -1,4 +1,4 @@
-# Curso de JavaScript
+# Curso de JavaScript ES6+
 
 Este repositório reúne exercícios e anotações realizadas durante meus estudos de **JavaScript**.  
 O conteúdo aqui não é um projeto executável, mas sim exemplos práticos para reforçar conceitos.
@@ -19,6 +19,11 @@ Cada pasta corresponde a um assunto ou exercício específico:
 - **Classes e Atributos** → Manipulação de classes CSS e atributos HTML via JavaScript
 - **Dimensões e Distâncias** → Propriedades para medir largura, altura e posição de elementos na página
 - **Eventos** → Adição e remoção de eventos, objeto `event` e boas práticas de uso
+- **Traversing e Manipulação** → Navegação entre elementos do DOM (parent, children, siblings) e alteração de conteúdo/estrutura
+- **Constructor Function** → Criação de funções construtoras para gerar múltiplos objetos com propriedades e métodos
+- **Prototype** → Entendendo a cadeia de protótipos, herança e extensão de funcionalidades em objetos
+- **Scroll Suave** → Implementação de navegação fluida entre seções da página usando JavaScript
+- **Animação ao Scroll** → Disparo de animações quando elementos entram na área visível da tela
 - _(Novos tópicos serão adicionados conforme o avanço do curso)_
 
 ## 🛠 Tecnologias
@@ -29,10 +34,8 @@ Cada pasta corresponde a um assunto ou exercício específico:
 
 ## 📌 Observações
 
-- O repositório é **exclusivamente para fins de estudo**.
-- Os códigos são exemplos isolados, criados para praticar conceitos vistos no curso.
-- Não há interface ou aplicação final.
-
----
+- O repositório é **exclusivamente para fins de estudo**
+- Os códigos são exemplos isolados, criados para praticar conceitos vistos no curso
+- Não há interface ou aplicação final
 
 💡 _Objetivo: registrar minha evolução no aprendizado de JavaScript e manter um histórico organizado das práticas realizadas._

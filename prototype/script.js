@@ -29,3 +29,47 @@ function Pessoa(nome, idade) {
 //acessan o mesmo método, mas __proto__ não tera acesso ao this.nome
 roberta.andar();
 roberta.__proto__.andar(); //não devemos falar com _proto_ diretamente = undefined
+
+const pais = "Brasil";
+const cidade = new String("Rio");
+
+pais.charAt(0); // B
+cidade.charAt(0); // R
+
+String.prototype;
+
+// Crie uma função construtora de Pessoas
+// Deve conter nome, sobrenome e idade
+function Pessoas(nome, sobrenome, idade) {
+  this.nome = nome;
+  this.sobrenome = sobrenome;
+  this.idade = idade;
+}
+
+const joao = new Pessoas("João", "Silva", 30);
+
+// Crie um método no protótipo que retorne
+// o nome completo da pessoa
+Pessoas.prototype.nomeCompleto = function () {
+  return `${this.nome} ${this.sobrenome}`;
+};
+// Liste os métodos acessados por
+// dados criados com NodeList,
+// HTMLCollection, Document
+Object.getOwnPropertyNames(NodeList.prototype);
+Object.getOwnPropertyNames(HTMLCollection.prototype);
+Object.getOwnPropertyNames(Document.prototype);
+
+// Liste os construtores dos dados abaixo
+const li = document.querySelector("li");
+
+li; //HTMLLIElement
+li.click;
+li.innerText;
+li.value;
+li.hidden;
+li.offsetLeft;
+li.click();
+
+// Qual o construtor do dado abaixo:
+li.hidden.constructor.name;

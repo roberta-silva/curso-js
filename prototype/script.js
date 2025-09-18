@@ -64,12 +64,12 @@ Object.getOwnPropertyNames(Document.prototype);
 const li = document.querySelector("li");
 
 li; //HTMLLIElement
-li.click;
-li.innerText;
-li.value;
-li.hidden;
-li.offsetLeft;
-li.click();
+li.click; // function
+li.innerText; //string
+li.value; //number
+li.hidden; // boolean
+li.offsetLeft; // number
+li.click(); // undefined
 
 // Qual o construtor do dado abaixo:
-li.hidden.constructor.name;
+li.hidden.constructor.name; //string //o que importa é o dado que está retornando

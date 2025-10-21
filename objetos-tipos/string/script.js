@@ -67,3 +67,43 @@ listaPrecos.forEach((preco) => {
 });
 listaPrecos[0].padStart(10, ".");
 listaPrecos[0].padEnd(10, ".");
+
+//repeat - repete a string n vezes
+const frasen = "ta";
+console.log(frasen.repeat(5));
+
+//replace - pode passar dois valores - troca parte da string por outra
+let listaItens = "camisas bones calcas bermudas vestidos saias";
+
+listaItens = listaItens.replace(/[ ]+/g, ", "); // /[]+/g = regular expression - buscando os espaços
+
+let preco = "R$2400,00";
+preco = preco.replaceAll(",", "."); //R$2400.00
+
+//split - divide a string de acordo com o padrao passado e retorna uma array
+const arrayList = listaItens.split(", ");
+console.log(arrayList);
+
+const htmlText = "<div>O melhor item</div><div>A melhor lista</div>";
+const htmlArray = htmlText.split("div");
+
+console.log(htmlText);
+console.log(htmlArray);
+
+const novoHTML = htmlArray.join("section");
+console.log(novoHTML);
+
+//toLowerCase and toUpperCase - minusculo e maiusculo
+const sexo1 = "Feminino";
+const sexo2 = "feminino";
+const sexo3 = "FEMININO";
+
+sexo1.toLowerCase() === "feminino"; // true
+sexo2.toLowerCase() === "feminino"; // true
+sexo3.toLowerCase() === "feminino"; // true
+
+//str.trim(), str.trimStart(), str.trimEnd() - remover espaços
+const valor = "  R$ 23.00   ";
+valor.trim(); // 'R$ 23.00'
+valor.trimStart(); // 'R$ 23.00   '
+valor.trimEnd(); // '  R$ 23.00'

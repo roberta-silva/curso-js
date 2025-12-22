@@ -1,7 +1,3 @@
-[data-cor="azul"] {
-  background: blue;
-}
-
 body,
 h1,
 h2,
@@ -13,12 +9,6 @@ dt,
 dl {
   margin: 0px;
   padding: 0px;
-}
-html.textomaior {
-  font-size: 150%;
-}
-.azul {
-  background: blue;
 }
 img {
   display: block;
@@ -47,7 +37,7 @@ body {
 }
 .menu li a {
   display: block;
-  padding: 15px;
+  padding: 10px;
   margin-right: 10px;
   color: #222;
   text-decoration: none;
@@ -100,6 +90,9 @@ body {
   height: 370px;
   overflow-y: scroll;
   grid-column: 2;
+}
+.animais-lista li {
+  cursor: pointer;
 }
 .animais-lista::-webkit-scrollbar {
   width: 18px;
@@ -191,7 +184,7 @@ body {
   }
   .faq-lista,
   .dados,
-  .maps {
+  .mapa {
     grid-column: 1 / 3;
   }
   .grid-section h1 {
@@ -204,34 +197,49 @@ body {
     margin-bottom: 0px;
   }
 }
-.topics li,
-.inicio {
-  background: #fb5;
-  border-radius: 4px;
-  padding: 4px;
-  margin: 4px;
-  text-align: center;
-}
-.topics li a,
-.inicio {
-  color: #000;
-  text-decoration: none;
-}
-.inicio {
-  width: max-content;
-  height: max-content;
-}
-.js .js-accordion dd {
+.js [data-tab="content"] section {
   display: none;
 }
-.js-accordion dt::after {
+[data-tab="content"] section.ativo {
+  display: block !important;
+}
+[data-tab="content"] section.ativo.show-right {
+  animation: show-right 0.5s forwards;
+}
+[data-tab="content"] section.ativo.show-down {
+  animation: show-down 0.5s forwards;
+}
+@keyframes show-right {
+  from {
+    opacity: 0;
+    transform: translate3d(-30px, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+@keyframes show-down {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -30px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+.js [data-anime="accordion"] dd {
+  display: none;
+}
+[data-anime="accordion"] dt::after {
   content: "⬎";
   margin-left: 10px;
 }
-.js-accordion dt.ativo::after {
+[data-anime="accordion"] dt.ativo::after {
   content: "⬏ ";
 }
-.js-accordion dd.ativo {
+[data-anime="accordion"] dd.ativo {
   display: block;
   animation: slideDown 0.5s forwards;
 }
@@ -245,12 +253,20 @@ body {
     opacity: 1;
   }
 }
-.js .js-scroll {
+.js [data-anime="scroll"] {
   opacity: 0;
   transform: translate3d(-30px, 0, 0);
-  transition: 0.3s;
+  transition: 0.13s;
 }
-.js .js-scroll.ativo {
+
+.js [data-anime="scroll"].ativo {
   opacity: 1;
   transform: translate3d(0, 0, 0);
+}
+.inicio {
+  background: #fb5;
+  border-radius: 4px;
+  padding: 4px;
+  margin: 4px;
+  text-align: center;
 }

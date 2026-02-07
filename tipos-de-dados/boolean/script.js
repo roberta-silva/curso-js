@@ -80,7 +80,6 @@ if (roberta > vinicius) {
 } else {
   console.log("vinicius mais velho");
 }
-
 // Dependendo do resultado coloque no console 'É maior', 'É igual' ou 'É menor'
 
 // Qual valor é retornado na seguinte expressão?

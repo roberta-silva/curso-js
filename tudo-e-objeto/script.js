@@ -6,11 +6,13 @@ console.log(nome.charAt(1));
 console.log(nome.replace("ta", "to"));
 
 var nomeMinusculo = nome.toLocaleLowerCase();
+var nomeMaiusculo = nome.toLocaleUpperCase();
+console.log(nomeMinusculo, nomeMaiusculo);
 
 //numeros
 var altura = 1.6;
 console.log(altura.toString());
-console.log(altura.toFixed());
+console.log(altura.toFixed()); //zero casas decimasi, então arredonda
 
 //funcoes
 console.log(addEventListener.length); // 2 parametros
@@ -40,3 +42,10 @@ btn.outerHTML;
 
 // busque na web um objeto (método) capaz de interagir com o clipboard,
 // clipboard é a parte do seu computador que lida com o CTRL + C e CTRL + V
+//navigator.clipboard
+function copiarTexto(texto) {
+  navigator.clipboard.writeText(texto);
+}
+document.querySelector("button").addEventListener("click", () => {
+  copiarTexto("texto copiado");
+});

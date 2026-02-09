@@ -1,18 +1,21 @@
 var possuiGraduacao = true;
 var possuiDoutorado = false;
-//
-var possuiGraduacao = true;
 
+console.log(typeof possuiGraduacao); //boolean
+
+// if simples
+if (possuiGraduacao) {
+  console.log("Possui graduação");
+}
+
+// if / else
 if (possuiGraduacao) {
   console.log("Possui graduação");
 } else {
   console.log("Não possui graduação");
 }
-// retorna Possui Graduação e não executa o else
-//
-var possuiGraduacao = true;
-var possuiDoutorado = false;
 
+// if / else if / else
 if (possuiDoutorado) {
   console.log("Possui graduação e doutorado");
 } else if (possuiGraduacao) {
@@ -20,36 +23,66 @@ if (possuiDoutorado) {
 } else {
   console.log("Não possui graduação");
 }
-// retorna Possui Graduação, mas não possui doutorado
 
-// //true or false
-// // Falsy
-// if(false)
-// if(0) // ou -0
-// if(NaN)
-// if(null)
-// if(undefined)
-// if('') // ou "" ou ``
-// // Truthy
-// if(true)
-// if(1)
-// if(' ')
-// if('andre')
-// if(-5)
-// if({})
+//true or false
+//valores FALSY (considerados false em condições)
+if (false) {} // false
+if (0) {} // false (zero)
+if (-0) {} // false
+if (NaN) {} // false
+if (null) {} // false
+if (undefined) {} // false
+if ("") {} // false (string vazia)
 
-//   // Truthy
-// if(!true) // false
-// if(!1) // false
-// if(!'') // true
-// if(!undefined) // true
-// if(!!' ') // true
-// if(!!'') // false
+// Valores TRUTHY (considerados true em condições)
+if (true) {} // true
+if (1) {} // true (qualquer número diferente de 0)
+if (-5) {} // true
+if (" ") {} // true (string com espaço)
+if ("andre") {} // true (qualquer string não vazia)
+if ({}) {} // true (objeto vazio)
+if ([]) {} // true (array vazio)
+
+//operadores de comparação
+10 == "10"; // true - compara valor, converte tipos
+10 === "10"; // false - compara valor E tipo
+10 != "10"; // false
+10 !== "10"; // true
+
+// Relacionais
 10 > 5; // true
 5 > 10; // false
 20 < 10; // false
 10 <= 10; // true
 10 >= 11; // false
+
+// AND (&&) - todas as condições devem ser verdadeiras
+console.log(true && true); // true
+console.log(true && false); // false
+console.log(5 > 2 && 10 > 5); // true
+
+// OR (||) - pelo menos uma condição deve ser verdadeira
+console.log(true || false); // true
+console.log(false || false); // false
+console.log(5 > 10 || 10 > 5); // true
+
+// NOT (!) - inverte o valor
+console.log(!true); // false
+console.log(!false); // true
+console.log(!(5 > 2)); // false
+
+//negação simples
+console.log(!true); // false
+console.log(!false); // true
+console.log(!1); // false (1 é truthy)
+console.log(!""); // true ("" é falsy)
+console.log(!undefined); // true
+
+//negação dupla (!!) - converte para boolean
+console.log(!!" "); // true (força conversão para boolean)
+console.log(!!""); // false
+console.log(!!1); // true
+console.log(!!0); // false
 
 //switch
 var corFavorita = "Azul";
@@ -68,8 +101,13 @@ switch (corFavorita) {
     console.log("Feche os olhos");
 }
 
-//EXERCICIO
+//operador ternario
+//sintaxe: condição ? valor_se_true : valor_se_false
+var idadeUsuario = 20;
+var status = idadeUsuario >= 18 ? "Maior de idade" : "Menor de idade";
+console.log(status); // "Maior de idade"
 
+//EXERCICIO
 // Verifique se a sua idade é maior do que a de algum parente
 var roberta = 26,
   vinicius = 28;
@@ -99,7 +137,7 @@ console.log(
   !!idade,
   !!possuiGraduacao,
   !!empregoFuturo,
-  !!dinheiroNaConta
+  !!dinheiroNaConta,
 );
 
 // Compare o total de habitantes do Brasil com China (valor em milhões)

@@ -1,124 +1,243 @@
+//função simples
 function areaQuadrado(lado) {
   return lado * lado;
 }
-console.log(areaQuadrado(2));
+console.log(areaQuadrado(4)); // 16
 
+//função sem parâmetros
 function pi() {
   return 3.14;
 }
-
 var total = 5 * pi(); // 15.7
-//
-function imc(peso, altura) {
-  var imc = peso / (altura * altura);
-  return imc;
-}
-console.log(imc(44, 1.6));
+console.log(total);
 
-//
+//função com múltiplos parâmetros
+function imc(peso, altura) {
+  var resultado = peso / (altura * altura);
+  return resultado;
+}
+console.log(imc(80, 1.8)); // 24.69
+console.log(imc(60, 1.65)); // 22.04
+
+//parâmetros com valores padrão (es6)
+function saudacao(nome = "Visitante") {
+  return `Olá, ${nome}!`;
+}
+console.log(saudacao("Maria")); // "Olá, Maria!"
+console.log(saudacao()); // "Olá, Visitante!"
+
+//RETURN
+//função com return
+function soma(a, b) {
+  return a + b;
+}
+var resultado = soma(5, 3); // 8
+
+//função sem return - retorna undefined
+function mostrarMensagem(texto) {
+  console.log(texto);
+  //não tem return
+}
+var retorno = mostrarMensagem("Olá"); // undefined
+console.log(retorno); // undefined
+
+//return interrompe a função
+function maiorDeIdade(idade) {
+  if (idade >= 18) {
+    return true; // sai da função aqui
+  }
+  return false; // só executa se idade < 18
+}
+
+//cindicionais em funções
 function corFavorita(cor) {
   if (cor === "azul") {
-    return "eu gosto do céu";
+    return "Eu gosto do céu";
   } else if (cor === "verde") {
-    return "eu gosto de mato";
+    return "Eu gosto de mato";
   } else {
-    return "eu nao gosto de cores";
+    return "Eu não gosto de cores";
   }
 }
-// Se apenas definirmos a função com o function e não executarmos a mesma, nada que estiver dentro dela irá acontecer
+console.log(corFavorita("azul")); // "Eu gosto do céu"
+console.log(corFavorita("vermelho")); // "Eu não gosto de cores"
 
-//Argumentos podem ser funções - Chamadas de Callback, geralmente são funções que ocorrem após algum evento.
-addEventListener("click", function () {
-  console.log("Clicou");
-});
-// A função possui dois argumentos
-// Primeiro é a string 'click'
-// Segundo é uma função anônima
-
-//Pode ou não retornar um valor - Quando não definimos o return, ela irá retornar undefined. O código interno da função é executado normalmente, independente de existir valor de return ou não.
-function imc(peso, altura) {
-  const imc = peso / altura ** 2;
-  console.log(imc);
-}
-imc(80, 1.8); // retorna o imc
-console.log(imc(80, 1.8)); // retorna o imc e undefined
-//
-
-//Valores retornados - Uma função pode retornar qualquer tipo de dado e até outras funções.
+//validação de tipos
 function terceiraIdade(idade) {
-  console.log(typeof idade);
   if (typeof idade !== "number") {
-    return "Por favor preencha um número";
+    return "Por favor, preencha um número";
   } else if (idade >= 60) {
     return true;
   } else {
     return false;
   }
 }
-console.log(terceiraIdade("r"));
+console.log(terceiraIdade(65)); // true
+console.log(terceiraIdade(30)); // false
+console.log(terceiraIdade("30")); // "Por favor, preencha um número"
+
 //Cuidado, retornar diferentes tipos de dados na mesma função não é uma boa ideia!!!!!!!!!
-
-//
-//Escopo - Variáveis e funções definidas dentro de um bloco {}, não são visíveis fora dele.
-function FaltaVisitar(paisesVisitados) {
-  var totalPaises = 193;
-  return `Falta visitar ${totalPaises - paisesVisitados} paises.`;
+//melhor seria:
+function terceiraIdadeMelhorado(idade) {
+  if (typeof idade !== "number") {
+    return false; // sempre retorna boolean
+  }
+  return idade >= 60;
 }
-console.log(totalPaises); // retorna erro pq está do lado de fora das {}
-//
 
-//exercicio /
-//  Crie uma função para verificar se um valor é Truthy
+//ESCOPO
+//variáveis dentro da função não são acessíveis fora
+function faltaVisitar(paisesVisitados) {
+  var totalPaises = 193; // só existe dentro da função
+  return `Falta visitar ${totalPaises - paisesVisitados} países.`;
+}
+console.log(faltaVisitar(50)); // Falta visitar 143 países.
+
+// console.log(totalPaises); // ERRO: totalPaises não está definido
+
+//variável global (fora da função)
+var totalPaisesGlobal = 193;
+
+function precisoVisitar(paisesVisitados) {
+  return `Ainda faltam ${totalPaisesGlobal - paisesVisitados} países`;
+}
+
+function jaVisitei(paisesVisitados) {
+  return `Já visitei ${paisesVisitados} de ${totalPaisesGlobal} países`;
+}
+
+console.log(precisoVisitar(20)); // Ainda faltam 173 países
+console.log(jaVisitei(20)); // Já visitei 20 de 193 países
+
+//FUNÇÕES COMO ARGUMENTOS - CALLBACKS
+//Callback é uma função passada como argumento
+addEventListener("click", function () {
+  console.log("Clicou!");
+});
+
+// Exemplo com setTimeout
+setTimeout(function () {
+  console.log("Executou após 2 segundos");
+}, 2000);
+
+// Callback nomeada
+function aoClicar() {
+  console.log("Função nomeada executada");
+}
+addEventListener("click", aoClicar);
+
+//HOISTING = IÇAMENTO
+//Function declarations são içadas
+console.log(minhaFuncao()); // funciona (antes - essa funcao está declarada abaixo)
+
+function minhaFuncao() {
+  return "Função içada";
+}
+
+//Function Expressions NÃO são içadas
+// console.log(minhaFuncao2()); // ERRO!
+var minhaFuncao2 = function () {
+  return "Não é içada";
+};
+
+//BOAS PRÁTICAS
+//1. Usar nomes descritivos
+function calcularAreaRetangulo(base, altura) {
+  return base * altura;
+} // BOM
+
+function calc(b, h) {
+  return b * h;
+} // RUIM
+
+//2. Uma função deve fazer apenas uma coisa
+function calcularEExibirIMC(peso, altura) {
+  // RUIM: faz duas coisas
+  var imc = peso / (altura * altura);
+  console.log(imc);
+  return imc;
+}
+
+// MELHOR: separar responsabilidades
+function calcularIMC(peso, altura) {
+  return peso / (altura * altura);
+}
+
+function exibirIMC(imc) {
+  console.log(`Seu IMC é: ${imc}`);
+}
+
+//3. Evitar retornar tipos diferentes
+function verificarIdade(idade) {
+  if (typeof idade !== "number") {
+    return "erro"; // string
+  }
+  return idade >= 18; // boolean
+} // RUIM
+
+// MELHOR: sempre retornar o mesmo tipo
+function ehMaiorDeIdade(idade) {
+  if (typeof idade !== "number") {
+    return false;
+  }
+  return idade >= 18;
+} // BOM
+
+//exercicios
+//Crie uma função para verificar se um valor é Truthy
 function isTruthy(valor) {
   return !!valor;
 }
-// Crie uma função matemática que retorne o perímetro de um quadrado
-// lembrando: perímetro é a soma dos quatro lados do quadrado
+console.log(isTruthy(1)); // true
+console.log(isTruthy(0)); // false
+console.log(isTruthy("")); // false
+console.log(isTruthy("texto")); // true
+
+//Crie uma função matemática que retorne o perímetro de um quadrado
 function perimetroQuadrado(lado) {
   return lado * 4;
 }
-// Crie uma função que retorne o seu nome completo
-// ela deve possuir os parâmetros: nome e sobrenome
+console.log(perimetroQuadrado(5)); // 20
 
-function completeName(name, lastName) {
-  return `${name} ${lastName}`;
+//Crie uma função que retorne o seu nome completo
+function nomeCompleto(nome, sobrenome) {
+  return `${nome} ${sobrenome}`;
 }
 
-// Crie uma função que verifica se um número é par
-function par(numero) {
-  var modulo = numero % 2;
-  if (modulo === 0) {
+console.log(nomeCompleto("Roberta", "Silva")); // "Roberta Silva"
+
+//Crie uma função que verifica se um número é par
+function ehPar(numero) {
+  return numero % 2 === 0;
+  // Forma simplificada (melhor que if/else)
+}
+
+console.log(ehPar(4)); // true
+console.log(ehPar(7)); // false
+
+// Versão com if/else (funciona, mas desnecessária)
+function ehParComIf(numero) {
+  if (numero % 2 === 0) {
     return true;
   } else {
     return false;
   }
 }
-// Crie uma função que retorne o tipo de
-// dado do argumento passado nela (typeof)
+
+//Crie uma função que retorne o tipo de dado do argumento
 function tipoDado(dado) {
   return typeof dado;
 }
 
-// addEventListener é uma função nativa do JavaScript
-// o primeiro parâmetro é o evento que ocorre e o segundo o Callback
-// utilize essa função para mostrar no console o seu nome completo
-// quando o evento 'click' ocorrer.
+console.log(tipoDado(42)); // "number"
+console.log(tipoDado("texto")); // "string"
+console.log(tipoDado(true)); // "boolean"
+
+//addEventListener com callback
 addEventListener("scroll", function () {
-  console.log("roberta silva");
+  console.log("Roberta Silva");
 });
 
 addEventListener("click", function () {
-  console.log("Clicou1");
+  console.log("Página foi clicada!");
 });
-
-// Corrija o erro abaixo
-var totalPaises = 193;
-
-function precisoVisitar(paisesVisitados) {
-  return `Ainda faltam ${totalPaises - paisesVisitados} países para visitar`;
-}
-function jaVisitei(paisesVisitados) {
-  return `Já visitei ${paisesVisitados} do total de ${totalPaises} países`;
-}
-precisoVisitar(20);
-jaVisitei(20);

@@ -1,19 +1,38 @@
+// Existem diferentes formas de declarar funções em JavaScript
+// Cada uma tem suas características e casos de uso
+
 //function declaration
 function somar(a, b) {
   return a + b;
 }
 somar(2, 2); //4
+// Características:
+// - Sofre HOISTING (pode ser chamada antes da declaração)
+// - Sempre tem nome
+// - Cria uma variável no escopo atual
 
 //vs
-//function expression = é criada a partir da declaração de uma variável
+//function expression 
+//é criada a partir da declaração de uma variável
 const dividir = function (a, b) {
   return a / b;
 };
 dividir(8, 2); //4
 
-//hoisting = function declarations sao completamente definidas no momento do hoisting
-//function expresion só é definida no momento da execução
+// Características:
+// - NÃO sofre hoisting completo (só a variável é içada)
+// - Pode ser anônima (sem nome)
+// - É atribuída a uma variável
 //por isso a ordem da declaracao de uma function expression possui importancia
+
+// Function expression com nome (útil para recursão e debug)
+const fatorial = function calcularFatorial(n) {
+  if (n <= 1) return 1;
+  return n * calcularFatorial(n - 1); // usa o próprio nome
+};
+console.log(fatorial(5)); // 120
+
+// HOISTING - DIFERENÇA CRÍTICA
 // testeFunctionExpression(); //erro Cannot access 'testeFunctionDeclaration' before initialization
 testeFunctionDeclaration();
 
@@ -24,13 +43,23 @@ function testeFunctionDeclaration() {
   console.log("function declaration");
 }
 
-//arrow function
+//ARROW FUNCTION
+// Sintaxe completa
+const multiplicar = (a, b) => {
+  return a * b;
+};
+
+// Return implícito (sem chaves)
 const subtrair = (a, b) => a - b;
 subtrair(5, 1); //4
 
 //com apenas um parametro
 const quadrado = (a) => a * a;
 quadrado(2); //4
+
+// Sem parâmetros
+const saudar = () => "Olá!";
+console.log(saudar()); // "Olá!"
 
 //IIFE - Immediately Invoked Function Expression
 //Antes da introdução de modules e da implementação do escopo de bloco,
@@ -52,22 +81,31 @@ console.log(instrumento);
 })();
 //nem todos navegadores tem a funcionalidade de module ainda
 
-//exercicios
-// Remova o erro
-const priceNumber = (n) => +n.replace("R$", "").replace(",", ".");
-console.log(priceNumber("R$ 99,99"));
+// QUANDO USAR CADA UMA
 
-// Crie uma IIFE e isole o escopo
-// de qualquer código JS.
+//FUNCTION DECLARATION:
+// - Precisar chamar antes da declaração
+// - Função top-level no escopo global
+// - Preferir hoisting
 
-(function () {
-  let nome = "Roberta";
-})();
+function inicializar() {
+  console.log("App iniciado");
+}
 
-// Como podemos utilizar
-// a função abaixo.
-const active = (callback) => callback();
+//FUNCTION EXPRESSION:
+// - Atribuir função a variável/propriedade
+// - Passar função como argumento
+// - Criar função dentro de outra função
 
-active(function () {
-  console.log("teste active");
-});
+const handleClick = function (event) {
+  console.log("Clicou");
+};
+
+// ARROW FUNCTION:
+// - Funções curtas e simples
+// - Callbacks
+// - Não precisar de "this" próprio
+// - Métodos de array (map, filter, etc)
+
+const numeros = [1, 2, 3];
+const dobrados = numeros.map((n) => n * 2);

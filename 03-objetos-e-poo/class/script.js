@@ -17,13 +17,15 @@ console.log(blueButton.element());
 
 //Class
 //syntactical sugar
-// o que acontece por tras continua utilizando o sistema de prototipos de uma funcao construtora para criar a classe
+//Por trás dos panos, ainda usa o sistema de prototypes
+//Mas com sintaxe mais limpa e moderna (ES6+)
 class Button1 {
   constructor(text, background, color) {
     this.text = text;
     this.background = background;
     this.color = color;
   }
+  // Métodos ficam automaticamente no prototype
   element() {
     const button1Element = document.createElement("button");
     button1Element.innerText = this.text;
@@ -41,26 +43,50 @@ class Button1 {
 const yellowButton = new Button1("Detalhes", "yellow", "black");
 console.log(yellowButton.element());
 console.log(yellowButton.appendTo("body"));
+// Ambos fazem a mesma coisa --
+// Class é apenas uma sintaxe mais clara
 
-//EXEMPLO
-// class Classe {
-//   constructor(propriedade) {
-//     this.propriedade = propriedade;
-//   }
-//   metodo1() {}
-//   metodo2() {}
-// }
+EXEMPLO;
+class MinhaClasse {
+  // CONSTRUCTOR - executado ao criar instância
+  constructor(propriedade) {
+    this.propriedade = propriedade; // propriedade da instância
+  }
+  // MÉTODOS - ficam no prototype
+  metodo1() {
+    return this.propriedade;
+  }
+  metodo2() {
+    console.log("método 2");
+  }
+  // GETTERS - propriedades computadas
+  get valor() {
+    return this.propriedade * 2;
+  }
 
-// function Constructor(propriedade) {
-//   this.propriedade = propriedade;
-// }
-// Constructor.prototype.metodo1 = function() {}
-// Constructor.prototype.metodo1 = function() {}
+  // SETTERS - validação ao atribuir
+  set valor(novo) {
+    this.propriedade = novo;
+  }
 
-//proprieades podem ser qualquer valor
-//static
-//cria o metodo dentro da funçao construtora, não mais dentro do prototipo
+  // MÉTODOS ESTÁTICOS - não precisam de instância
+  static metodoEstatico() {
+    return "Chamado direto na classe";
+  }
+}
 
+function Constructor(propriedade) {
+  this.propriedade = propriedade;
+}
+Constructor.prototype.metodo1 = function () {};
+Constructor.prototype.metodo1 = function () {};
+
+// proprieades podem ser qualquer valor
+// static
+// cria o metodo dentro da funçao construtora, não mais dentro do prototipo
+
+// Métodos estáticos pertencem à CLASSE, não à instância
+// Úteis para funções auxiliares ou factory methods
 class Button2 {
   constructor(options) {
     this.options = options;
@@ -85,6 +111,7 @@ const greenButtonStatic = Button2.createButton("Clique", "lightgreen");
 console.log(greenButtonStatic);
 
 //get e set
+//acessar métodos como se fossem propriedades
 const botao = {
   get tamanho() {
     return this._numero || 100;
